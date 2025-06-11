@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login: Forgot/Reset Password</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .password-reset-box {
+      background-color: white;
+      padding: 30px;
+      display: block;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    label {
+      font-size: 12px;
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 0px;
+      font-weight: normal;
+      cursor: pointer;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin-top: 30px;
+      margin-bottom: 0px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin-top: 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="password-reset-box">
+    <h2>Account Access: Forgot/Reset Password</h2>
+    <form onsubmit="handleLogin(); return false;">
+      <input type="text" placeholder="Email" id="email" required><br>
+      <input type="password" placeholder="Password" id="password" required><br>
+      <label>
+        <input type="checkbox" id="togglePassword1"> Show Password
+      </label>
+      <input type="password" placeholder="New Password" id="new-password" required><br>
+      <label>
+        <input type="checkbox" id="togglePassword2"> Show New Password
+      </label>
+      <button type="submit">Login</button>
+    </form>
+    <p id="result" style="color: green; margin-top: 15px;"></p>
+  </div>
+
+  <script>
+    document.getElementById('togglePassword1').addEventListener('change', function() {
+      const passwordInput = document.getElementById('password');
+      if (this.checked) {
+        passwordInput.type = 'text';
+      } 
+      else {
+        passwordInput.type = 'password';
+      }
+    });
+
+    document.getElementById('togglePassword2').addEventListener('change', function() {
+      const newPasswordInput = document.getElementById('new-password');
+      if (this.checked) {
+        newPasswordInput.type = 'text';
+      } 
+      else {
+        newPasswordInput.type = 'password';
+      }
+    });
+    
+    function handleLogin() {
+      const email = document.getElementById('email').value;
+      document.getElementById('result').innerText = "Thank you! A confirmation email is being sent!";
+    }
+  </script>
+</body>
+</html>
